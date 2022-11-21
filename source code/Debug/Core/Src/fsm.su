@@ -1,0 +1,4 @@
+fsm.c:23:6:str_cpy	24	static
+fsm.c:29:6:command_parser_fsm	8	static
+fsm.c:57:9:compare	24	static
+fsm.c:65:6:uart_communication_fsm	128	static
