@@ -47,7 +47,6 @@ ADC_HandleTypeDef hadc1;
 
 TIM_HandleTypeDef htim2;
 
-UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 uint8_t temp = 0;
@@ -56,7 +55,7 @@ uint8_t index_buffer = 0;
 uint8_t buffer_flag = 0;
 
 
-long int ADC_Value=0;
+int ADC_Value=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -116,12 +115,16 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_UART_Receive_IT(&huart2, &temp, 1);
   HAL_TIM_Base_Start_IT(&htim2);
+  char str[50];
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+//	 ADC_Value=HAL_ADC_GetValue(&hadc1);
+//	 HAL_UART_Transmit (& huart2 , ( void *) str , sprintf ( str , "%d\n", ADC_Value ) , 1000) ;
+//	 HAL_Delay (500) ;
 	 if( buffer_flag == 1){
 		  command_parser_fsm ();
 		  buffer_flag = 0;

@@ -1,4 +1,4 @@
-fsm.c:23:6:str_cpy	24	static
-fsm.c:29:6:command_parser_fsm	8	static
-fsm.c:57:9:compare	24	static
-fsm.c:65:6:uart_communication_fsm	128	static
+../Core/Src/fsm.c:23:6:str_cpy	24	static
+../Core/Src/fsm.c:29:6:command_parser_fsm	8	static
+../Core/Src/fsm.c:63:9:compare	24	static
+../Core/Src/fsm.c:71:6:uart_communication_fsm	128	static

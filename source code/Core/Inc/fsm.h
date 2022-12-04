@@ -10,15 +10,13 @@
 
 #include "main.h"
 
-extern UART_HandleTypeDef huart2;
-
 //flags
 extern uint8_t command_flag;
 extern uint8_t command_data[30];
 
 //status
-int status;
-int communication_status;
+extern int status;
+extern int communication_status;
 
 
 //define states
@@ -26,7 +24,7 @@ int communication_status;
 #define GET_COMMAND		1
 #define	GET_END			2
 
-#define RECIVE_COMMAND	10
+#define RECEIVE_COMMAND	10
 #define SEND_ADC		11
 
 //prototypes

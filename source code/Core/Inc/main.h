@@ -65,7 +65,7 @@ extern ADC_HandleTypeDef hadc1;
 
 extern UART_HandleTypeDef huart2;
 
-extern long int ADC_Value;
+extern int ADC_Value;
 
 #define MAX_BUFFER_SIZE 30
 
