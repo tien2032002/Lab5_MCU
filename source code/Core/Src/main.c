@@ -55,7 +55,7 @@ uint8_t index_buffer = 0;
 uint8_t buffer_flag = 0;
 
 
-int ADC_Value=0;
+uint32_t ADC_Value=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -73,9 +73,13 @@ static void MX_TIM2_Init(void);
 void HAL_UART_RxCpltCallback ( UART_HandleTypeDef * huart ){
 	if(huart -> Instance == USART2 ){
 		// HAL_UART_Transmit (& huart2 , &temp , 1, 50) ;
+		//write new char to buffer[index_buffer] and increase index_buffer
 		buffer [ index_buffer ++] = temp ;
+		//check size
 		if( index_buffer == 30) index_buffer = 0;
+		//flag for new char has read
 		buffer_flag = 1;
+		//call interrupt again
 		HAL_UART_Receive_IT (& huart2 , &temp , 1);
 	}
 }
@@ -116,6 +120,7 @@ int main(void)
   HAL_UART_Receive_IT(&huart2, &temp, 1);
   HAL_TIM_Base_Start_IT(&htim2);
   char str[50];
+  HAL_ADC_Start(&hadc1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -123,7 +128,7 @@ int main(void)
   while (1)
   {
 //	 ADC_Value=HAL_ADC_GetValue(&hadc1);
-//	 HAL_UART_Transmit (& huart2 , ( void *) str , sprintf ( str , "%d\n", ADC_Value ) , 1000) ;
+//	 HAL_UART_Transmit (& huart2 , ( void *) str , sprintf ( str , "%ld\n", ADC_Value ) , 1000) ;
 //	 HAL_Delay (500) ;
 	 if( buffer_flag == 1){
 		  command_parser_fsm ();
